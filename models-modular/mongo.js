@@ -17,7 +17,11 @@ class Model {
    * @returns {count:#,results:[{*}]} | {*}
    */
   get(_id) {
-    
+    if (_id) {
+      return this.schema.findOne({_id: _id});
+    } else {
+      return this.schema.find({});
+    }
   }
 
   /**
@@ -26,7 +30,8 @@ class Model {
    * @returns {*}
    */
   create(record) {
-
+    let newRecord = new this.schema(record);
+    return newRecord.save();
   }
 
   /**
@@ -36,7 +41,7 @@ class Model {
    * @returns {*}
    */
   update(_id, record) {
-
+    return this.schema.findByIdAndUpdate(_id, record, {new: true});
   }
 
   /**
@@ -45,7 +50,7 @@ class Model {
    * @returns {*}
    */
   delete(_id) {
-
+    return this.schema.findByIdAndDelete(_id);
   }
 
 }

@@ -11,8 +11,8 @@ class Categories {
   }
 
   get(_id) {
-    if (id) {
-      return Category.findOne({_id: id});
+    if (_id) {
+      return Category.findOne({_id: _id});
     } else {
       return Category.find({});
     }
@@ -20,15 +20,15 @@ class Categories {
 
   create(record) {
     let newRecord = new Category(record);
-    
+    return newRecord.save();
   }
 
   update(_id, record) {
-    // Call the appropriate mongoose method to update a record
+    return Category.findByIdAndUpdate(_id, record, { new: true });
   }
 
   delete(_id) {
-    // Call the appropriate mongoose method to delete a record
+    return Category.findByIdAndDelete(_id);
   }
 
 }
