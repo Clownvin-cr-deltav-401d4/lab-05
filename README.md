@@ -1,30 +1,33 @@
-# LAB - 4
+# LAB - 5
 
-## Data Models
+## Data Models with Mongo, Mongoose, ans Supergoose
 
 ### Author: Calvin Hall
 
 ### Links and Resources
-* [submission PR](https://github.com/Clownvin-cr-deltav-401d4/lab-04/pull/1)
-* [travis](https://www.travis-ci.com/Clownvin-cr-deltav-401d4/lab-04)
+* [submission PR](https://github.com/Clownvin-cr-deltav-401d4/lab-05/pull/1)
+* [travis](https://www.travis-ci.com/Clownvin-cr-deltav-401d4/lab-05)
 
 ### Modules
-#### `memory.js`
+#### `model-test.js`
 ##### Exported Values and Methods
-###### Exports Model class
-* get(id) - Get the entry with the id.
-* create(entry) - Create a new entry with the data passed in.
-* update(id, entry) - Update entry with id to be the passed in entry.
-* delete(id) - Delete entry matching id.
-* sanitize(entry) - Check if an entry is valid, and return undefined if is not, otherwise return the entry.
+* testModel(Model, getTestObj, getTestUpdate, type) - Tests a model using a test suite designed for testing models. 
+
+#### `mongo.js`
+##### Exported Values and Methods
+* constructor(schema) - Takes and stores the schema to use.
+* get(_id) - Returns a promise which will get the document matching the _id from Mongo, or all documents if no _id is provided.
+* create(record) - Creates a record and returns a promise that will resolve with the newly created record.
+* update(_id, record) - Returns a promise that resolves with the newly updated record from the Mongo DB.
+* delete(_id) - Returns a promise that resolves once the document matching the _id is deleted from the Mongo DB.
 
 #### `categories.js`
-##### Extends Model class
-Passes in schema with category name as string
+##### Extends Mongo model class
+Simply passes in the Schema from categories-schema into the Mongo super constructor.
 
 #### `products.js`
-##### Extends Model class
-Passes in schema with category_id as string, price, weight, and stock as numbers
+##### Extends Mongo model class
+Simply passes in the Schema from products-schema into the Mongo super constructor
 
 #### Running the app
 * `npm test`
